@@ -4,20 +4,20 @@
 
 #ifndef ACTIVEENTITY_H
 #define ACTIVEENTITY_H
-#include "Entity.h"
+
 #include "Map.h"
 
+class Entity;
 
 class ActiveEntity : public Entity {
-  Map map;
+  Map* map;
 
 public:
-  ActiveEntity(const Map &map, const int x, const int y, const char symbol) : Entity(x, y, symbol), map(map) {}
+  ActiveEntity(Map *map, const int x, const int y, const char symbol) : Entity(x, y, symbol), map(map) {map->add(this);}
 
-  void move(int x, int y);
+  void move(int x, int y) const;
 
 };
-
 
 
 #endif //ACTIVEENTITY_H

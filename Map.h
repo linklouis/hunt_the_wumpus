@@ -5,16 +5,19 @@
 #ifndef MAP_H
 #define MAP_H
 #include "Room.h"
-#include <map>
-
 
 
 class Map {
   static constexpr int SIZE = 6;
-  Room room[SIZE][SIZE];
+  Room rooms[SIZE][SIZE];
 
 public:
-  Room getRoom(int x, int y);
+  Map();
+  ~Map();
+
+  Room& getRoom(const int x, const int y) {return rooms[x][y];}
+  void add(Entity* entity) {getRoom(entity->getX(), entity->getY()).addEntity(unique_ptr<Entity>(entity));}
+  void display() const;
 
 };
 

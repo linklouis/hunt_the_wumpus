@@ -7,13 +7,14 @@
 #include "ActiveEntity.h"
 
 
-class Player : public ActiveEntity {
+class Player final : public ActiveEntity {
   int numBullets = 1;
   int numKnives = 0;
 
-  public:
-  Player(const int x, const int y, const char symbol) : ActiveEntity(x, y, symbol) {}
-
+public:
+  Player(Map *map, const int x, const int y) : ActiveEntity(map, x, y, 'P') {}
+  std::string getHintMessage(int playerX, int playerY) override {return  "";}
+  std::string playerEnters(Player player) override {return  "";}
 };
 
 

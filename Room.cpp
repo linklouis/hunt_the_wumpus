@@ -22,3 +22,8 @@ unique_ptr<Entity> Room::removeEntity(const Entity* entity) {
   contents.erase(it);
   return removedEntity;
 }
+
+char Room::getSymbol() const {
+  if (contents.empty()) return '.';
+  return contents.front().get()->getSymbol();
+}

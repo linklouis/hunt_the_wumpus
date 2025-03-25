@@ -5,6 +5,7 @@
 #ifndef WUMPUS_H
 #define WUMPUS_H
 #include "Entity.h"
+#include "Player.h"
 
 
 class Wumpus : public Entity {

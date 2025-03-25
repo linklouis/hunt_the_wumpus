@@ -6,11 +6,8 @@
 #define ENTITY_H
 #include <string>
 
-#include "Player.h"
-
-
 class Entity {
-  char symbol;
+  char symbol = ' ';
 
 protected:
   int x;
@@ -24,7 +21,12 @@ public:
   Entity(const int x, const int y, const char symbol) :symbol(symbol), x(x), y(y) {}
 
   virtual std::string getHintMessage(int playerX, int playerY) = 0;
-  virtual std::string playerEnters(Player player) = 0;
+  virtual std::string playerEnters(class Player player) = 0;
+
+  char getSymbol() const {return symbol;}
+
+  int getX() const {return x;}
+  int getY() const {return y;}
 };
 
 
