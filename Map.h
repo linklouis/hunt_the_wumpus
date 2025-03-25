@@ -10,15 +10,11 @@
 
 
 class Map {
-  static constexpr int SIZE = 20;
-  std::map<std::char, int> roomTypes = {
-    {"Alice", 30},
-    {"Bob", 25},
-    {"Charlie", 35}
-  };
+  static constexpr int SIZE = 6;
   Room room[SIZE][SIZE];
 
 public:
+  Room getRoom(int x, int y);
 
 };
 

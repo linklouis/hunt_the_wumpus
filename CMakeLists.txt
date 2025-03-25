@@ -7,4 +7,14 @@ add_executable(Hunt_The_Wumpus main.cpp
         Map.cpp
         Map.h
         Room.cpp
-        Room.h)
+        Room.h
+        Entity.cpp
+        Entity.h
+        ActiveEntity.cpp
+        ActiveEntity.h
+        ActiveEntity.cpp
+        ActiveEntity.h
+        Player.cpp
+        Player.h
+        Wumpus.cpp
+        Wumpus.h)
