@@ -14,7 +14,7 @@ class Player final : public ActiveEntity {
 public:
   Player(Map *map, const int x, const int y) : ActiveEntity(map, x, y, 'P') {}
   std::string getHintMessage(int playerX, int playerY) override {return  "";}
-  bool playerEnters(Player player) override {return  false;}
+  bool playerEnters(Player &player) override {return  false;}
   bool defend();
 };
 

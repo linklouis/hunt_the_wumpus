@@ -6,6 +6,7 @@
 #define ROOM_H
 #include <algorithm>
 #include <functional>
+#include <iostream>
 #include <memory>
 
 #include "Entity.h"
@@ -28,13 +29,12 @@ public:
   }
 
   bool forEach(const function<bool(const std::unique_ptr<Entity>&)>& func) {
-    bool result = false;
     for (const auto& entity : contents) {
       if (func(entity)) {
-        result = true;
+        return true;
       }
     }
-    return result;
+    return false;
   }
 
 

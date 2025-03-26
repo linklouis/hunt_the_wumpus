@@ -17,4 +17,6 @@ add_executable(Hunt_The_Wumpus main.cpp
         Player.cpp
         Player.h
         Wumpus.cpp
-        Wumpus.h)
+        Wumpus.h
+        Treent.cpp
+        Treent.h)

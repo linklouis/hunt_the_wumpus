@@ -2,26 +2,25 @@
 
 #include "Map.h"
 #include "Player.h"
+#include "Treent.h"
 #include "Wumpus.h"
 
 using namespace std;
 
-void runOneGameLoop(const Map& map, Player& player, Wumpus& wumpus);
+void runOneGameLoop(const Map& map, Player& player, Wumpus& wumpus, Treent& treent);
 
 
 [[noreturn]] int main() {
   auto map = Map();
   const auto playerPtr = new Player(&map, 3, 3);
   const auto wumpusPtr = new Wumpus(rand() % 6, rand() % 6);
+  const auto treentPtr = new Treent(rand() % 6, rand() % 6);
   map.add(wumpusPtr);
+  map.add(treentPtr);
 
   while (true) {
-    runOneGameLoop(map, *playerPtr, *wumpusPtr);
+    runOneGameLoop(map, *playerPtr, *wumpusPtr, *treentPtr);
   }
-}
-
-bool encounterEnemy(Player player) {
-
 }
 
 
@@ -33,11 +32,12 @@ void printHelp() {
   << endl;
 }
 
-void takeInput(Player &player) {
+void takeInput(Player& player) {
   cout << endl << "Action: N)orth  S)outh  E)ast  W)est H)elp  Q)uit: ";
   char input;
   cin >> input;
 
+  // All of these move calls are fine
   switch (input) {
     case 'N': case 'n': player.move(0, -1); break;
     case 'S': case 's': player.move(0, 1); break;
@@ -49,11 +49,11 @@ void takeInput(Player &player) {
 
     default:
       cout << "Command not recognized. Try again. ";
-    // takeInput(player); // Recursive call
+    takeInput(player);
   }
 }
 
-void runOneGameLoop(const Map& map, Player& player, Wumpus& wumpus) {
+void runOneGameLoop(const Map& map, Player& player, Wumpus& wumpus, Treent& treent) {
   map.display();
   Room& room = player.getRoom();
   cout << room.getDescription() << " ";
@@ -64,6 +64,7 @@ void runOneGameLoop(const Map& map, Player& player, Wumpus& wumpus) {
     return;
   }
   cout << wumpus.getHintMessage(player.getX(), player.getY()) << " ";
+  cout << treent.getHintMessage(player.getX(), player.getY()) << " ";
 
   takeInput(player);
 }

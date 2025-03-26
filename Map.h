@@ -8,17 +8,19 @@
 
 
 class Map {
-  static constexpr int SIZE = 6;
-  Room rooms[SIZE][SIZE];
-
 public:
+  static constexpr int SIZE = 6;
   Map();
   ~Map();
+  Map(const Map& other) = delete; // Delete copy constructor
+  Map& operator=(const Map& other) = delete; // Delete assignment operator
 
   Room& getRoom(const int x, const int y) {return rooms[x][y];}
   void add(Entity* entity) {getRoom(entity->getX(), entity->getY()).addEntity(unique_ptr<Entity>(entity));}
   void display() const;
 
+private:
+  Room rooms[SIZE][SIZE];
 };
 
 
