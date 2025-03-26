@@ -15,8 +15,8 @@ class ActiveEntity : public Entity {
 public:
   ActiveEntity(Map *map, const int x, const int y, const char symbol) : Entity(x, y, symbol), map(map) {map->add(this);}
 
-  void move(int x, int y) const;
-
+  void move(int x, int y);
+  Room& getRoom() const {return map->getRoom(x, y);}
 };
 
 

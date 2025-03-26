@@ -13,7 +13,8 @@ public:
   Wumpus(const int x, const int y) :Entity(x, y, 'W') {}
 
   std::string getHintMessage(int playerX, int playerY) override;
-  std::string playerEnters(Player player) override;
+
+  bool playerEnters(Player player) override;
 };
 
 

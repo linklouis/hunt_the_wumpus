@@ -21,7 +21,7 @@ public:
   Entity(const int x, const int y, const char symbol) :symbol(symbol), x(x), y(y) {}
 
   virtual std::string getHintMessage(int playerX, int playerY) = 0;
-  virtual std::string playerEnters(class Player player) = 0;
+  virtual bool playerEnters(class Player player) = 0;
 
   char getSymbol() const {return symbol;}
 
