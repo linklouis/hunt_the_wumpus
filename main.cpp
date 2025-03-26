@@ -56,14 +56,14 @@ void takeInput(Player &player) {
 void runOneGameLoop(const Map& map, Player& player, Wumpus& wumpus) {
   map.display();
   Room& room = player.getRoom();
-  cout << room.getDescription();
+  cout << room.getDescription() << " ";
 
   if (room.forEach([&player](const std::unique_ptr<Entity>& entity) {
     return entity->playerEnters(player);
   })) {
     return;
   }
-  cout << wumpus.getHintMessage(player.getX(), player.getY());
+  cout << wumpus.getHintMessage(player.getX(), player.getY()) << " ";
 
   takeInput(player);
 }

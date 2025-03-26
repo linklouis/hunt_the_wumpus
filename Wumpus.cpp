@@ -12,6 +12,11 @@ std::string Wumpus::getHintMessage(const int playerX, const int playerY) {
 }
 
 bool Wumpus::playerEnters(Player player) {
-  std::cout << std::endl << "You found the Wumpus! You are devoured." << std::endl;
+  std::cout << std::endl << "In front of you is the Wumpus! ";
+  if (player.defend()) {
+    std::cout << "You killed it!! >:0" << std::endl;
+  } else {
+    std::cout << "You are devoured." << std::endl;
+  }
   exit(0);
 }
