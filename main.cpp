@@ -1,25 +1,38 @@
 #include <iostream>
 
 #include "Map.h"
+#include "Nightmare.h"
 #include "Player.h"
 #include "Treent.h"
 #include "Wumpus.h"
 
 using namespace std;
 
-void runOneGameLoop(const Map& map, Player& player, Wumpus& wumpus, Treent& treent);
+void runOneGameLoop(const Map& map, Player& player, Wumpus& wumpus, Treent& treent, Nightmare& nightmare);
 
 
 [[noreturn]] int main() {
+  srand(time(nullptr));
   auto map = Map();
-  const auto playerPtr = new Player(&map, 3, 3);
-  const auto wumpusPtr = new Wumpus(rand() % 6, rand() % 6);
-  const auto treentPtr = new Treent(rand() % 6, rand() % 6);
+  const auto playerPtr = new Player(&map, Vector(3));
+  Vector position = Vector::random(6);
+  while (position == playerPtr->getPosition()) {
+    position = Vector::random(6);
+  }
+  const auto wumpusPtr = new Wumpus(position);
+  while (position == playerPtr->getPosition() || position == wumpusPtr->getPosition()) {
+    position = Vector::random(6);
+  }
+  const auto treentPtr = new Treent(position);
+  while (position.dist(playerPtr->getPosition()) < 2|| position == wumpusPtr->getPosition() || position == treentPtr->getPosition()) {
+    position = Vector::random(6);
+  }
+  const auto nightmarePtr = new Nightmare(&map, position);
   map.add(wumpusPtr);
   map.add(treentPtr);
 
   while (true) {
-    runOneGameLoop(map, *playerPtr, *wumpusPtr, *treentPtr);
+    runOneGameLoop(map, *playerPtr, *wumpusPtr, *treentPtr, *nightmarePtr);
   }
 }
 
@@ -37,7 +50,6 @@ void takeInput(Player& player) {
   char input;
   cin >> input;
 
-  // All of these move calls are fine
   switch (input) {
     case 'N': case 'n': player.move(0, -1); break;
     case 'S': case 's': player.move(0, 1); break;
@@ -53,8 +65,8 @@ void takeInput(Player& player) {
   }
 }
 
-void runOneGameLoop(const Map& map, Player& player, Wumpus& wumpus, Treent& treent) {
-  map.display();
+void runOneGameLoop(const Map& map, Player& player, Wumpus& wumpus, Treent& treent, Nightmare& nightmare) {
+  nightmare.decrementTimer();
   Room& room = player.getRoom();
   cout << room.getDescription() << " ";
 
@@ -63,8 +75,12 @@ void runOneGameLoop(const Map& map, Player& player, Wumpus& wumpus, Treent& tree
   })) {
     return;
   }
-  cout << wumpus.getHintMessage(player.getX(), player.getY()) << " ";
-  cout << treent.getHintMessage(player.getX(), player.getY()) << " ";
+  cout << treent.getHintMessage(player.getPosition()) << " ";
+  cout << nightmare.getHintMessage(player.getPosition()) << " ";
+  cout << wumpus.getHintMessage(player.getPosition()) << " ";
+
+  nightmare.hunt(player);
+  map.display();
 
   takeInput(player);
 }

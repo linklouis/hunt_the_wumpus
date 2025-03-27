@@ -4,6 +4,15 @@
 
 #include "Room.h"
 
+bool Room::forEach(const function<bool(const std::unique_ptr<Entity>&)>& func) {
+  for (const auto& entity : contents) {
+    if (func(entity)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 void Room::transferEntity(Room& destination, const Entity* entity) {
   if (unique_ptr<Entity> entityPtr = removeEntity(entity)) {
     destination.addEntity(move(entityPtr));

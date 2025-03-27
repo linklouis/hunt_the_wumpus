@@ -13,10 +13,11 @@ class ActiveEntity : public Entity {
   Map* map;
 
 public:
-  ActiveEntity(Map *map, const int x, const int y, const char symbol) : Entity(x, y, symbol), map(map) {map->add(this);}
+  ActiveEntity(Map *map, const Vector position, const char symbol) : Entity(position, symbol), map(map) {map->add(this);}
 
-  void move(int x, int y);
-  Room& getRoom() const {return map->getRoom(x, y);}
+  void move(Vector translation);
+  void move(const int x, const int y) {move(Vector(x, y));}
+  Room& getRoom() const {return map->getRoom(position);}
 };
 
 

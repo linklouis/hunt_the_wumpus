@@ -10,11 +10,11 @@
 
 class Wumpus final : public Entity {
 public:
-  Wumpus(const int x, const int y) :Entity(x, y, 'W') {}
+  explicit Wumpus(const Vector position) :Entity(position, 'W') {}
 
-  std::string getHintMessage(int playerX, int playerY) override;
+  std::string getHintMessage(Vector playerPosition) override {return isAdjacent(playerPosition) ? "A stick snaps nearby..." : "";}
 
-  bool playerEnters(class Player &player) override;
+  bool playerEnters(Player &player) override;
 };
 
 

@@ -9,18 +9,21 @@
 
 class Map {
 public:
-  static constexpr int SIZE = 6;
+  static constexpr int WIDTH = 6;  // Now compile-time constants
+  static constexpr int HEIGHT = 6;
   Map();
   ~Map();
   Map(const Map& other) = delete; // Delete copy constructor
   Map& operator=(const Map& other) = delete; // Delete assignment operator
 
   Room& getRoom(const int x, const int y) {return rooms[x][y];}
-  void add(Entity* entity) {getRoom(entity->getX(), entity->getY()).addEntity(unique_ptr<Entity>(entity));}
+  Room& getRoom(const Vector position) {return rooms[position.getX()][position.getY()];}
+  void add(Entity* entity) {getRoom(entity->getPosition()).addEntity(unique_ptr<Entity>(entity));}
   void display() const;
+  Vector size() const {return Vector(WIDTH, HEIGHT);}
 
 private:
-  Room rooms[SIZE][SIZE];
+  Room rooms[WIDTH][HEIGHT];
 };
 
 

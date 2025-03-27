@@ -10,11 +10,11 @@
 
 class Treent final : public Entity {
 public:
-  Treent(const int x, const int y) :Entity(x, y, 'T') {}
+  explicit Treent(const Vector position) :Entity(position, 'T') {}
 
-  std::string getHintMessage(int playerX, int playerY) override;
+  std::string getHintMessage(const Vector playerPosition) override {return isAdjacent(playerPosition) ? "Branches creak nearby." : "";}
 
-  bool playerEnters(class Player &player) override;
+  bool playerEnters(Player &player) override;
 
 };
 

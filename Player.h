@@ -12,10 +12,13 @@ class Player final : public ActiveEntity {
   int numKnives = 0;
 
 public:
-  Player(Map *map, const int x, const int y) : ActiveEntity(map, x, y, 'P') {}
-  std::string getHintMessage(int playerX, int playerY) override {return  "";}
+  Player(Map *map, const Vector position) : ActiveEntity(map, position, 'P') {}
+  std::string getHintMessage(Vector playerPosition) override {return  "";}
   bool playerEnters(Player &player) override {return  false;}
   bool defend();
+
+private:
+  void getDefenceInput();
 };
 
 

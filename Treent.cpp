@@ -5,18 +5,15 @@
 #include "Treent.h"
 #include <iostream>
 
-std::string Treent::getHintMessage(const int playerX, const int playerY) {
-  if (isAdjacent(playerX, playerY)) return "Branches creak nearby.";
-  return "";
-}
+using namespace std;
 
 bool Treent::playerEnters(Player &player) {
-  std::cout << std::endl << "Snakelike branches entangle your feet. You're hoisted into the air and dragged into the canopy!";
+  cout << endl << "Snakelike branches entangle your feet. You're hoisted into the air and dragged into the canopy!";
   if (player.defend()) {
-    player.move(rand() % 4 - 2, rand() % 4 - 2);  // Works without this line
-    std::cout << "You manage to escape from the branches. You fall back to the forest floor... Somewhere else." << std::endl;  // But runs this line even when it breaks
+    player.move(Vector::random(4, -2));
+    cout << "You manage to escape from the branches. You fall back to the forest floor... Somewhere else." << endl;
     return true;
   }
-  std::cout << "Your empty rifle falls out of the branches onto the ground. You are devoured." << std::endl;
+  cout << "Your empty rifle falls out of the branches onto the ground. You are devoured." << endl;
   exit(0);
 }

@@ -24,24 +24,15 @@ public:
   Room(const Room& other) = delete; // Delete copy constructor
   Room& operator=(const Room& other) = delete; // Delete assignment operator
 
-  ~Room() {
-    contents.clear();
-  }
+  ~Room() {contents.clear();}
 
-  bool forEach(const function<bool(const std::unique_ptr<Entity>&)>& func) {
-    for (const auto& entity : contents) {
-      if (func(entity)) {
-        return true;
-      }
-    }
-    return false;
-  }
+  bool forEach(const function<bool(const std::unique_ptr<Entity>&)>& func);
 
 
   void addEntity(unique_ptr<Entity> entity) {contents.push_back(move(entity));}
   void transferEntity(Room& destination, const Entity* entity);
   char getSymbol() const;
-  string getDescription() const {return description;};
+  string getDescription() const {return description;}
 
 private:
   unique_ptr<Entity> removeEntity(const Entity* entity);
