@@ -10,6 +10,7 @@
 class Entity;
 
 class ActiveEntity : public Entity {
+protected:
   Map* map;
 
 public:

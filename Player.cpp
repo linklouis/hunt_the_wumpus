@@ -8,7 +8,7 @@
 
 bool Player::defend() {
   if (numKnives == 0 && numBullets == 0) return false;
-  cout << endl << "Defend yourself? K)nife[" << numKnives << "] G)un[" << numBullets << "]: ";
+  cout << "Defend yourself? K)nife[" << numKnives << "] G)un[" << numBullets << "]: ";
   getDefenceInput();
   return true;
 }

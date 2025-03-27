@@ -9,8 +9,8 @@
 
 class Map {
 public:
-  static constexpr int WIDTH = 6;  // Now compile-time constants
-  static constexpr int HEIGHT = 6;
+  static constexpr int WIDTH = 6;
+  static constexpr int HEIGHT = 7;
   Map();
   ~Map();
   Map(const Map& other) = delete; // Delete copy constructor

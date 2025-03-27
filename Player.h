@@ -16,6 +16,9 @@ public:
   std::string getHintMessage(Vector playerPosition) override {return  "";}
   bool playerEnters(Player &player) override {return  false;}
   bool defend();
+Room& getAdjacentRoom(const Vector direction) const {
+    return map->getRoom(getPosition() + direction);
+  }
 
 private:
   void getDefenceInput();

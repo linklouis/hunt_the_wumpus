@@ -12,7 +12,7 @@ class Nightmare final : public ActiveEntity {
   Vector home;
   const int HUNT_RANGE = 2;
   const int SOUND_RANGE = 3;
-  int moveTimer = 1;
+  int huntTimer = 3;
 
 public:
   Nightmare(Map *map, const Vector position) : ActiveEntity(map, position, 'N'), home(position) {}
@@ -21,10 +21,15 @@ public:
   void decrementTimer() {if (activeTimer > 0) activeTimer--;}
   // Should be the last thing to happen in the loop so it doesn't enter the player's room and attack them in the middle of a turn.
   // Also makes it more like it's "following" the player.
-  void hunt(const Player &player);
+  void hunt(Player &player);
 
 private:
-  void returnHome() {move(home - position);}
+  void returnHome() {
+    move(home - position);
+    resetHuntTimer();
+  }
+  void resetHuntTimer() {huntTimer = 3;}
+  bool attack(Player &player);
 };
 
 

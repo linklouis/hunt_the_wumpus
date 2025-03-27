@@ -20,7 +20,7 @@ class Room {
   bool navigable;
 
 public:
-  explicit Room(const bool navigable = false, const string &description = "Just more forest.") :description(description), navigable(navigable) {}
+  explicit Room(const bool navigable = true, const string &description = "Just more forest.") :description(description), navigable(navigable) {}
   Room(const Room& other) = delete; // Delete copy constructor
   Room& operator=(const Room& other) = delete; // Delete assignment operator
 
@@ -33,6 +33,7 @@ public:
   void transferEntity(Room& destination, const Entity* entity);
   char getSymbol() const;
   string getDescription() const {return description;}
+  bool isNavigable() const {return navigable;}
 
 private:
   unique_ptr<Entity> removeEntity(const Entity* entity);
