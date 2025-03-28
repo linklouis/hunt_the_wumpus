@@ -6,6 +6,18 @@
 
 #include <iostream>
 
+std::string Vector::direction() const {
+  const float angle = atan2(y, x) * 180 / M_PI;
+  if (angle > -22.5  && angle <= 22.5)   return "East";
+  if (angle > 22.5   && angle <= 67.5)   return "Northeast";
+  if (angle > 67.5   && angle <= 112.5)  return "North";
+  if (angle > 112.5  && angle <= 157.5)  return "Northwest";
+  if (angle > 157.5  || angle <= -157.5) return "West";
+  if (angle > -157.5 && angle <= -112.5) return "Southwest";
+  if (angle > -112.5 && angle <= -67.5)  return "South";
+  return "Southeast";
+}
+
 Vector Vector::clamp(const Vector& min, const Vector& max) const {
   if (min.getX() > max.getX()) {
     throw std::invalid_argument("Vector::clamp: min.getX() > max.getX()");

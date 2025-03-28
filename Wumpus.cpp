@@ -9,7 +9,7 @@
 
 bool Wumpus::playerEnters(Player &player) {
   std::cout << std::endl << "In front of you is the Wumpus! " << std::endl;
-  if (player.defend()) {
+  if (player.defend(1)) {
     std::cout << "You killed it!! >:0" << std::endl;
   } else {
     std::cout << "You are devoured." << std::endl;

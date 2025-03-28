@@ -5,6 +5,7 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 #include <cmath>
+#include <string>
 
 
 class Vector {
@@ -14,6 +15,7 @@ public:
   explicit Vector(const int a) : x(a), y(a) {}
 
   float magnitude() const {return sqrt(x * x + y * y);}
+  std::string direction() const;
 
   float dist(const Vector other) const {return (*this - other).magnitude();}
 

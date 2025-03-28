@@ -24,4 +24,6 @@ add_executable(Hunt_The_Wumpus main.cpp
         Nightmare.cpp
         Nightmare.h
         Vector.cpp
-        Vector.h)
+        Vector.h
+        Remains.cpp
+        Remains.h)

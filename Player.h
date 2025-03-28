@@ -15,13 +15,13 @@ public:
   Player(Map *map, const Vector position) : ActiveEntity(map, position, 'P') {}
   std::string getHintMessage(Vector playerPosition) override {return  "";}
   bool playerEnters(Player &player) override {return  false;}
-  bool defend();
-Room& getAdjacentRoom(const Vector direction) const {
-    return map->getRoom(getPosition() + direction);
-  }
+  bool defend(int threatLevel=0);
+  Room& getAdjacentRoom(const Vector direction) const {return map->getRoom(getPosition() + direction);}
+  string getKnife() {numKnives++; return "Knives: " + to_string(numKnives);}
+  string getBullet() {numBullets++; return "Bullets: " + to_string(numBullets);}
 
 private:
-  void getDefenceInput();
+  bool getDefenceInput();
 };
 
 

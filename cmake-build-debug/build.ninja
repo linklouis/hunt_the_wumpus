@@ -109,6 +109,12 @@ build CMakeFiles/Hunt_The_Wumpus.dir/Vector.cpp.obj: CXX_COMPILER__Hunt_The_Wump
   OBJECT_DIR = CMakeFiles\Hunt_The_Wumpus.dir
   OBJECT_FILE_DIR = CMakeFiles\Hunt_The_Wumpus.dir
 
+build CMakeFiles/Hunt_The_Wumpus.dir/Remains.cpp.obj: CXX_COMPILER__Hunt_The_Wumpus_unscanned_Debug C$:/Users/linkl/OneDrive$ -$ Milwaukee$ School$ of$ Engineering/Desktop/Semester$ 2/Proc.$ and$ OOP$ C++/hunt_the_wumpus/Remains.cpp || cmake_object_order_depends_target_Hunt_The_Wumpus
+  DEP_FILE = CMakeFiles\Hunt_The_Wumpus.dir\Remains.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Hunt_The_Wumpus.dir
+  OBJECT_FILE_DIR = CMakeFiles\Hunt_The_Wumpus.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Hunt_The_Wumpus
@@ -117,7 +123,7 @@ build CMakeFiles/Hunt_The_Wumpus.dir/Vector.cpp.obj: CXX_COMPILER__Hunt_The_Wump
 #############################################
 # Link the executable Hunt_The_Wumpus.exe
 
-build Hunt_The_Wumpus.exe: CXX_EXECUTABLE_LINKER__Hunt_The_Wumpus_Debug CMakeFiles/Hunt_The_Wumpus.dir/main.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/Map.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/Room.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/Entity.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/ActiveEntity.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/Player.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/Wumpus.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/Treent.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/Nightmare.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/Vector.cpp.obj
+build Hunt_The_Wumpus.exe: CXX_EXECUTABLE_LINKER__Hunt_The_Wumpus_Debug CMakeFiles/Hunt_The_Wumpus.dir/main.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/Map.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/Room.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/Entity.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/ActiveEntity.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/Player.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/Wumpus.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/Treent.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/Nightmare.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/Vector.cpp.obj CMakeFiles/Hunt_The_Wumpus.dir/Remains.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Hunt_The_Wumpus.dir

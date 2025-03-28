@@ -39,8 +39,8 @@ bool Nightmare::attack(Player &player) {
 
 void Nightmare::hunt(Player &player) {
   if (activeTimer == 0 && home.dist(player.getPosition()) < HUNT_RANGE) {
-    if (huntTimer > 1) move(player.getPosition() - getPosition());
-    else if (huntTimer > 0)  attack(player);
+    if (huntTimer > 0) move(player.getPosition() - getPosition());
+    else attack(player);
     huntTimer--;
     // if (moveTimer > 0) {
     //   moveTimer--;
